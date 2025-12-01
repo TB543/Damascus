@@ -1,0 +1,34 @@
+.title {
+    -unity-font-definition: url("project://database/Assets/Fonts/alagard.ttf?fileID=12800000&guid=27ba54dd5518fed42adcffc2ad9a91db&type=3#alagard");
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    font-size: 100px;
+    margin-top: 75px;
+    margin-right: 0;
+    margin-bottom: 20px;
+    margin-left: 0;
+}
+
+.header {
+    -unity-font-definition: url("project://database/Assets/Fonts/alagard.ttf?fileID=12800000&guid=27ba54dd5518fed42adcffc2ad9a91db&type=3#alagard");
+    font-size: 60px;
+    -unity-text-align: upper-center;
+    -unity-font-style: italic;
+    margin-top: 0;
+}
+
+.body {
+    -unity-font-definition: url("project://database/Assets/Fonts/alagard.ttf?fileID=12800000&guid=27ba54dd5518fed42adcffc2ad9a91db&type=3#alagard");
+    font-size: 30px;
+    -unity-text-align: upper-center;
+    margin-bottom: 25px;
+}
+
+.button {
+    -unity-font-definition: url("project://database/Assets/Fonts/alagard.ttf?fileID=12800000&guid=27ba54dd5518fed42adcffc2ad9a91db&type=3#alagard");
+    font-size: 100px;
+    margin-top: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+}

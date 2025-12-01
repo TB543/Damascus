@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/CreditsMenuStyle.uss?fileID=7433441132597879392&amp;guid=ce9c105abf0f0da42928405fd0635698&amp;type=3#CreditsMenuStyle" />
+    <ui:VisualElement name="AutoScrollContainer" style="flex-grow: 1;">
+        <ui:Label text="Game Design &amp; Programming" name="Title1" class="title" />
+        <ui:Label text="Ty B" name="Header1" class="header" />
+        <ui:Label text="GitHub: https://github.com/TB543&#10;Steam: https://steamcommunity.com/profiles/76561199085561652/" name="Body1" class="body" />
+        <ui:Label text="Pixel Art &amp; Assets" name="Title2" class="title" />
+        <ui:Label text="Pixel Art Forest: Eder Muniz" name="Header2" class="header" />
+        <ui:Label text=" Itch.io: https://edermunizz.itch.io/&#10; Twitter: @EdermuniZpixels&#10; Instagram: @edermuniz&#10; Email: edermuniz14@gmail.com&#10; Game Dev Market: https://www.gamedevmarket.net/member/edermuniz14/&#10; Website: https://edermuniz.carrd.co/" name="Body2" class="body" />
+        <ui:Label text="Character Assets: Luiz Melo" name="Header3" class="header" />
+        <ui:Label text=" Itch.io: https://itch.io/profile/luizmelo&#10;Twitter: @LuizGdeMelo" name="Body3" class="body" />
+        <ui:Label text="Software &amp; Additional Tools" name="Title3" class="title" />
+        <ui:Label text="Game Engine: Unity" name="Header4" class="header" />
+        <ui:Label text="Thanks For Playing! :)" name="Title4" class="title" />
+    </ui:VisualElement>
+    <ui:Button text="MainMenu&#10;" name="MenuButton" class="button" />
+</ui:UXML>
