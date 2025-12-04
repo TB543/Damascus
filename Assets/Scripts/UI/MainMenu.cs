@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnPlayButtonClicked(ClickEvent evt)
     {
+        SceneManager.LoadScene("Scenes/Game");
     }
 
     private void OnSettingsButtonClicked(ClickEvent evt)

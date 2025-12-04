@@ -119,12 +119,12 @@ TextureImporter:
       name: Layer_0004_Lights_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 123
-        width: 242
-        height: 213
+        x: 0
+        y: 23
+        width: 928
+        height: 558
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -137,33 +137,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Layer_0004_Lights_1
-      rect:
-        serializedVersion: 2
-        x: 275
-        y: 114
-        width: 342
-        height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2db75a89fcc1f9c80800000000000000
-      internalID: -8313894709157856302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 39d7e4ecb1e10cc41b2db0cd0b78fd0b
     internalID: 0
     vertices: []
     indices: 
@@ -172,7 +150,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Layer_0004_Lights_0: 7482223510269884056
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
