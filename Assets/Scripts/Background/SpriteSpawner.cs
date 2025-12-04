@@ -42,7 +42,6 @@ public class BGSpriteSpawner : MonoBehaviour
             sprites.RemoveLast();
         }
     }
-
     private void spawnSprite(float scale, bool right = false)
     {
         // gets sprite position
