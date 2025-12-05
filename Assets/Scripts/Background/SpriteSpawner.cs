@@ -10,7 +10,7 @@ public class BGSpriteSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        PlayerController.cameraMovedCallback.AddListener(onCameraMove);
+        CharacterBehavior.cameraMovedCallback.AddListener(onCameraMove);
     }
 
     // Update is called once per frame
