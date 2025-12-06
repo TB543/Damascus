@@ -73,7 +73,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -152,10 +152,10 @@ TextureImporter:
       name: Cat-3-Stretching_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 17
-        width: 22
-        height: 15
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +174,10 @@ TextureImporter:
       name: Cat-3-Stretching_1
       rect:
         serializedVersion: 2
-        x: 65
-        y: 17
-        width: 20
-        height: 14
+        x: 50
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,10 +196,10 @@ TextureImporter:
       name: Cat-3-Stretching_2
       rect:
         serializedVersion: 2
-        x: 113
-        y: 17
-        width: 21
-        height: 13
+        x: 100
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: Cat-3-Stretching_3
       rect:
         serializedVersion: 2
-        x: 161
-        y: 17
-        width: 23
-        height: 15
+        x: 150
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +240,10 @@ TextureImporter:
       name: Cat-3-Stretching_4
       rect:
         serializedVersion: 2
-        x: 211
-        y: 17
-        width: 23
-        height: 15
+        x: 200
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,10 +262,10 @@ TextureImporter:
       name: Cat-3-Stretching_5
       rect:
         serializedVersion: 2
-        x: 261
-        y: 17
-        width: 23
-        height: 15
+        x: 250
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,10 +284,10 @@ TextureImporter:
       name: Cat-3-Stretching_6
       rect:
         serializedVersion: 2
-        x: 311
-        y: 17
-        width: 24
-        height: 15
+        x: 300
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,10 +306,10 @@ TextureImporter:
       name: Cat-3-Stretching_7
       rect:
         serializedVersion: 2
-        x: 361
-        y: 17
-        width: 24
-        height: 15
+        x: 350
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +328,10 @@ TextureImporter:
       name: Cat-3-Stretching_8
       rect:
         serializedVersion: 2
-        x: 410
-        y: 17
-        width: 25
-        height: 15
+        x: 400
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,10 +350,10 @@ TextureImporter:
       name: Cat-3-Stretching_9
       rect:
         serializedVersion: 2
-        x: 460
-        y: 17
-        width: 25
-        height: 15
+        x: 450
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,10 +372,10 @@ TextureImporter:
       name: Cat-3-Stretching_10
       rect:
         serializedVersion: 2
-        x: 510
-        y: 17
-        width: 25
-        height: 15
+        x: 500
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,10 +394,10 @@ TextureImporter:
       name: Cat-3-Stretching_11
       rect:
         serializedVersion: 2
-        x: 561
-        y: 17
-        width: 24
-        height: 14
+        x: 550
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -416,10 +416,10 @@ TextureImporter:
       name: Cat-3-Stretching_12
       rect:
         serializedVersion: 2
-        x: 612
-        y: 17
-        width: 23
-        height: 15
+        x: 600
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -438,7 +438,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 61a2cf86ec407bb439622c2ce0efe581
     internalID: 0
     vertices: []
     indices: 
@@ -446,8 +446,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":13.0,"y":1.0},"gridSpriteSize":{"x":50.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Cat-3-Stretching_0: -7552012228416763063
+      Cat-3-Stretching_1: 2767722650155071011
+      Cat-3-Stretching_10: 1012290425493040506
+      Cat-3-Stretching_11: -6880018691091805778
+      Cat-3-Stretching_12: -5586696576958356940
+      Cat-3-Stretching_2: -2034470868390339481
+      Cat-3-Stretching_3: -8062364929244452859
+      Cat-3-Stretching_4: -39132552212388053
+      Cat-3-Stretching_5: 8547193083179374745
+      Cat-3-Stretching_6: 5146266907123612651
+      Cat-3-Stretching_7: -5924299520896517793
+      Cat-3-Stretching_8: 3417147801018931782
+      Cat-3-Stretching_9: 2161266638481881563
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

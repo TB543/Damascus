@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -137,10 +137,10 @@ TextureImporter:
       name: Cat-5-Walk_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 17
-        width: 26
-        height: 17
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: Cat-5-Walk_1
       rect:
         serializedVersion: 2
-        x: 61
-        y: 17
-        width: 27
-        height: 16
+        x: 50
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: Cat-5-Walk_2
       rect:
         serializedVersion: 2
-        x: 111
-        y: 17
-        width: 27
-        height: 17
+        x: 100
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: Cat-5-Walk_3
       rect:
         serializedVersion: 2
-        x: 160
-        y: 17
-        width: 28
-        height: 17
+        x: 150
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: Cat-5-Walk_4
       rect:
         serializedVersion: 2
-        x: 210
-        y: 17
-        width: 28
-        height: 17
+        x: 200
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: Cat-5-Walk_5
       rect:
         serializedVersion: 2
-        x: 261
-        y: 17
-        width: 27
-        height: 16
+        x: 250
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,10 +269,10 @@ TextureImporter:
       name: Cat-5-Walk_6
       rect:
         serializedVersion: 2
-        x: 311
-        y: 17
-        width: 27
-        height: 17
+        x: 300
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,10 +291,10 @@ TextureImporter:
       name: Cat-5-Walk_7
       rect:
         serializedVersion: 2
-        x: 362
-        y: 17
-        width: 26
-        height: 17
+        x: 350
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2e7102f8b1f1161439e93ccdb3649344
     internalID: 0
     vertices: []
     indices: 
@@ -321,8 +321,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":50.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Cat-5-Walk_0: 3753061258516919144
+      Cat-5-Walk_1: -7595533427371364113
+      Cat-5-Walk_2: -337195496555966465
+      Cat-5-Walk_3: 1431570271382651082
+      Cat-5-Walk_4: -5539091745678034265
+      Cat-5-Walk_5: -5511869818596058530
+      Cat-5-Walk_6: -6665615852455325131
+      Cat-5-Walk_7: -6913764953881239231
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

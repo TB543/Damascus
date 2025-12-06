@@ -49,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -128,10 +128,10 @@ TextureImporter:
       name: Cat-2-Licking 1_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 17
-        width: 15
-        height: 18
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +150,10 @@ TextureImporter:
       name: Cat-2-Licking 1_1
       rect:
         serializedVersion: 2
-        x: 67
-        y: 17
-        width: 15
-        height: 17
+        x: 50
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,10 +172,10 @@ TextureImporter:
       name: Cat-2-Licking 1_2
       rect:
         serializedVersion: 2
-        x: 117
-        y: 17
-        width: 15
-        height: 17
+        x: 100
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,10 +194,10 @@ TextureImporter:
       name: Cat-2-Licking 1_3
       rect:
         serializedVersion: 2
-        x: 167
-        y: 17
-        width: 15
-        height: 18
+        x: 150
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: Cat-2-Licking 1_4
       rect:
         serializedVersion: 2
-        x: 217
-        y: 17
-        width: 15
-        height: 18
+        x: 200
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 68a9458261b618f4190bf82d3a73d1fd
     internalID: 0
     vertices: []
     indices: 
@@ -246,8 +246,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":50.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Cat-2-Licking 1_0: 7064493923114505638
+      Cat-2-Licking 1_1: 7708590404993844806
+      Cat-2-Licking 1_2: 2157768744151200360
+      Cat-2-Licking 1_3: -6045219801296775984
+      Cat-2-Licking 1_4: -5888991941783952436
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -55,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -134,10 +134,10 @@ TextureImporter:
       name: Explode_0
       rect:
         serializedVersion: 2
-        x: 121
-        y: 19
-        width: 12
-        height: 12
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +156,10 @@ TextureImporter:
       name: Explode_1
       rect:
         serializedVersion: 2
-        x: 165
-        y: 12
-        width: 28
-        height: 28
+        x: 50
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +178,10 @@ TextureImporter:
       name: Explode_2
       rect:
         serializedVersion: 2
-        x: 210
-        y: 7
-        width: 25
-        height: 28
+        x: 100
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,10 +200,10 @@ TextureImporter:
       name: Explode_3
       rect:
         serializedVersion: 2
-        x: 212
-        y: 31
-        width: 6
-        height: 6
+        x: 150
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +222,10 @@ TextureImporter:
       name: Explode_4
       rect:
         serializedVersion: 2
-        x: 232
-        y: 1
-        width: 108
-        height: 49
+        x: 200
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +244,10 @@ TextureImporter:
       name: Explode_5
       rect:
         serializedVersion: 2
-        x: 22
-        y: 19
-        width: 11
-        height: 11
+        x: 250
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,10 +266,10 @@ TextureImporter:
       name: Explode_6
       rect:
         serializedVersion: 2
-        x: 74
-        y: 21
-        width: 7
-        height: 8
+        x: 300
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ebf53b29062a822439b6901bc488d72d
     internalID: 0
     vertices: []
     indices: 
@@ -296,8 +296,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":1.0},"gridSpriteSize":{"x":50.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Explode_0: -2887184577470883374
+      Explode_1: 8288982013464879355
+      Explode_2: -4085701817799866075
+      Explode_3: -5964474748036044434
+      Explode_4: 1990628112201042793
+      Explode_5: -3628878560167924253
+      Explode_6: 7567364251426146524
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

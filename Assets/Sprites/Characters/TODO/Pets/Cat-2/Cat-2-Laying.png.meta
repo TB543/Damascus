@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -137,10 +137,10 @@ TextureImporter:
       name: Cat-2-Laying_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 17
-        width: 23
-        height: 16
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: Cat-2-Laying_1
       rect:
         serializedVersion: 2
-        x: 65
-        y: 17
-        width: 21
-        height: 16
+        x: 50
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: Cat-2-Laying_2
       rect:
         serializedVersion: 2
-        x: 116
-        y: 17
-        width: 20
-        height: 16
+        x: 100
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: Cat-2-Laying_3
       rect:
         serializedVersion: 2
-        x: 166
-        y: 17
-        width: 20
-        height: 16
+        x: 150
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: Cat-2-Laying_4
       rect:
         serializedVersion: 2
-        x: 216
-        y: 17
-        width: 20
-        height: 16
+        x: 200
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: Cat-2-Laying_5
       rect:
         serializedVersion: 2
-        x: 267
-        y: 17
-        width: 18
-        height: 16
+        x: 250
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,10 +269,10 @@ TextureImporter:
       name: Cat-2-Laying_6
       rect:
         serializedVersion: 2
-        x: 318
-        y: 17
-        width: 17
-        height: 10
+        x: 300
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,10 +291,10 @@ TextureImporter:
       name: Cat-2-Laying_7
       rect:
         serializedVersion: 2
-        x: 368
-        y: 17
-        width: 17
-        height: 10
+        x: 350
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8f2f0db52c87a164a8ec89f206e63cd7
     internalID: 0
     vertices: []
     indices: 
@@ -321,8 +321,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":50.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Cat-2-Laying_0: -4652660231658348791
+      Cat-2-Laying_1: -1168394743248179308
+      Cat-2-Laying_2: -1378002533409332146
+      Cat-2-Laying_3: 8968565396130668849
+      Cat-2-Laying_4: 4644119810529592832
+      Cat-2-Laying_5: -8238885916166550255
+      Cat-2-Laying_6: 6542444074775409708
+      Cat-2-Laying_7: 5483465892874117152
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

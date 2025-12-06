@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -143,10 +143,10 @@ TextureImporter:
       name: Cat-6-Idle_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 17
-        width: 21
-        height: 16
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,10 +165,10 @@ TextureImporter:
       name: Cat-6-Idle_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 17
-        width: 22
-        height: 15
+        x: 50
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +187,10 @@ TextureImporter:
       name: Cat-6-Idle_2
       rect:
         serializedVersion: 2
-        x: 113
-        y: 17
-        width: 23
-        height: 15
+        x: 100
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,10 +209,10 @@ TextureImporter:
       name: Cat-6-Idle_3
       rect:
         serializedVersion: 2
-        x: 164
-        y: 17
-        width: 22
-        height: 15
+        x: 150
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +231,10 @@ TextureImporter:
       name: Cat-6-Idle_4
       rect:
         serializedVersion: 2
-        x: 215
-        y: 17
-        width: 21
-        height: 15
+        x: 200
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,10 +253,10 @@ TextureImporter:
       name: Cat-6-Idle_5
       rect:
         serializedVersion: 2
-        x: 265
-        y: 17
-        width: 21
-        height: 15
+        x: 250
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,10 +275,10 @@ TextureImporter:
       name: Cat-6-Idle_6
       rect:
         serializedVersion: 2
-        x: 315
-        y: 17
-        width: 21
-        height: 15
+        x: 300
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,10 +297,10 @@ TextureImporter:
       name: Cat-6-Idle_7
       rect:
         serializedVersion: 2
-        x: 364
-        y: 17
-        width: 22
-        height: 16
+        x: 350
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,10 +319,10 @@ TextureImporter:
       name: Cat-6-Idle_8
       rect:
         serializedVersion: 2
-        x: 415
-        y: 17
-        width: 21
-        height: 16
+        x: 400
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,10 +341,10 @@ TextureImporter:
       name: Cat-6-Idle_9
       rect:
         serializedVersion: 2
-        x: 466
-        y: 17
-        width: 20
-        height: 16
+        x: 450
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 627dc0a70fa0293439a618541285c0e8
     internalID: 0
     vertices: []
     indices: 
@@ -371,8 +371,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":10.0,"y":1.0},"gridSpriteSize":{"x":50.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Cat-6-Idle_0: -2371938418034777451
+      Cat-6-Idle_1: 6778448645214306702
+      Cat-6-Idle_2: 3361563952807068674
+      Cat-6-Idle_3: 2519784758129409721
+      Cat-6-Idle_4: -5675732564887295519
+      Cat-6-Idle_5: -8885563473970345672
+      Cat-6-Idle_6: -1527002881097552872
+      Cat-6-Idle_7: 2503670871225367849
+      Cat-6-Idle_8: 3301830363446653700
+      Cat-6-Idle_9: 8693166666816362900
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
