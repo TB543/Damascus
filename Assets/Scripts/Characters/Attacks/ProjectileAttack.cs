@@ -4,6 +4,8 @@ using UnityEngine;
 public class ProjectileAttack : AbstractAttack
 {
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private float initialVelocity;
+    [SerializeField] private float maxDistance;
     private bool running = false;
 
     public override void startAttack()
@@ -32,5 +34,6 @@ public class ProjectileAttack : AbstractAttack
         projectile.transform.parent = null;
         projectile.transform.position = worldPosition;
         projectile.transform.rotation = worldRotation;
+        projectile.GetComponent<ProjectileBehavior>().init(damage, maxDistance, initialVelocity, transform.gameObject.layer);
     }
 }
