@@ -7,7 +7,7 @@ public class Collisions : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        CharacterBehavior.cameraMovedCallback.AddListener(onCameraMove);
+        PlayerMovementController.cameraMovedCallback.AddListener(onCameraMove);
         Camera cam = Camera.main;
         boxCollider = GetComponent<BoxCollider2D>();
         float left = cam.ScreenToWorldPoint(new Vector3(0, 0, cam.nearClipPlane)).x;

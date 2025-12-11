@@ -5,12 +5,12 @@ public class BGSpriteSpawner : MonoBehaviour
 {
     [SerializeField] private Sprite image;
     [SerializeField] private int zLayer;
-    private LinkedList<GameObject> sprites = new LinkedList<GameObject>();
+    private LinkedList<GameObject> sprites = new();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        CharacterBehavior.cameraMovedCallback.AddListener(onCameraMove);
+        PlayerMovementController.cameraMovedCallback.AddListener(onCameraMove);
     }
 
     // Update is called once per frame
