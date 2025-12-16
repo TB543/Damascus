@@ -1,0 +1,11 @@
+pet prefabs
+
+extra animations
+
+projectile gravity
+
+flying eye movement
+
+set character stats
+
+attack effects like burning

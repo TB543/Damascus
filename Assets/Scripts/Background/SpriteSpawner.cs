@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,16 +6,31 @@ public class BGSpriteSpawner : MonoBehaviour
 {
     [SerializeField] private Sprite image;
     [SerializeField] private int zLayer;
+    [SerializeField] bool isBaseLayer;
+
+    public bool IsBaseLayer => isBaseLayer;
+    public int ZLayer => zLayer;
+    int baseLayer;
     private LinkedList<GameObject> sprites = new();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         PlayerMovementController.cameraMovedCallback.AddListener(onCameraMove);
+        checkSprites();
+
+        // gets base layer
+        foreach (Transform sibling in transform.parent)
+        {
+            BGSpriteSpawner layer = sibling.gameObject.GetComponent<BGSpriteSpawner>();
+            if (isBaseLayer && layer is not null && layer.IsBaseLayer && zLayer != layer.ZLayer)
+                throw new InvalidOperationException("Only 1 z-level can be set as the base layer");
+            else if (layer is not null && layer.IsBaseLayer)
+                baseLayer = layer.ZLayer;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void checkSprites()
     {
         // get the screen bbox in world coordinates
         Camera cam = Camera.main;
@@ -67,6 +83,7 @@ public class BGSpriteSpawner : MonoBehaviour
 
     private void onCameraMove(float dx)
     {
-        transform.position += new Vector3(-dx * (1 / Mathf.Pow(1 + zLayer, 0.5f)), 0, 0);
+        transform.position += new Vector3(dx - (dx * Mathf.Pow(.75f, zLayer - baseLayer)), 0, 0);
+        checkSprites();
     }
 }

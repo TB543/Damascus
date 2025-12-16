@@ -8,7 +8,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private InputActionReference jump;
 
     private MovementBehavior player;
-    private float previousXPosition = 0f;
+    private static float previousXPosition = 0f;
     private static PlayerMovementController singleton;
     public static UnityEvent<float> cameraMovedCallback = new();
 
@@ -16,10 +16,15 @@ public class PlayerMovementController : MonoBehaviour
     void Start()
     {
         if (singleton is not null)
-            throw new System.InvalidOperationException("Only one Player Movement Controller should exist at a time.");
+            throw new System.InvalidOperationException("Only one Player Controller should exist at a time.");
         singleton = this;
-        player = GetComponent<MovementBehavior>();
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        player = GetComponentInParent<MovementBehavior>();
+        movement.action.Enable();
+    }
+
+    private void OnDestroy()
+    {
+        singleton = null;
     }
 
     void FixedUpdate()

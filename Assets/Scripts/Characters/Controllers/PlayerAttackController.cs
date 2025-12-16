@@ -7,16 +7,19 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField] private InputActionReference[] attacks;
 
     private AttackBehavior player;
-    private static PlayerAttackController singleton;
+    private int oldLayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (singleton is not null)
-            throw new InvalidOperationException("Only one Player Attack Controller should exist at a time.");
-        singleton = this;
-        player = GetComponent<AttackBehavior>();
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        oldLayer = transform.parent.gameObject.layer;
+        player = GetComponentInParent<AttackBehavior>();
+        transform.parent.gameObject.GetComponent<AttackBehavior>().setLayer(LayerMask.NameToLayer("Player"));
+    }
+
+    private void OnDestroy()
+    {
+        transform.parent.gameObject.GetComponent<AttackBehavior>().setLayer(oldLayer);
     }
 
     private void OnEnable()
@@ -33,9 +36,9 @@ public class PlayerAttackController : MonoBehaviour
     {
         foreach (InputActionReference attack in attacks)
         {
-            attack.action.started += onAttackStart;
-            attack.action.canceled += onAttackEnd;
-            attack.action.Enable();
+            attack.action.started -= onAttackStart;
+            attack.action.canceled -= onAttackEnd;
+            attack.action.Disable();
         }
     }
 

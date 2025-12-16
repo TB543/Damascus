@@ -17,12 +17,19 @@ public class AttackBehavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        collisionLayer = GetComponent<PlayerAttackController>() == null ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        hurtbox = GetComponentInChildren<PolygonCollider2D>();
+        hurtbox = GetComponent<PolygonCollider2D>();
+        setLayer(gameObject.layer);
         for (int i = 0; i < attacks.Length; i++)
             attacks[i].init(i + 1, animator);
+    }
+
+    public void setLayer(int layer)
+    {
+        gameObject.layer = layer;
+        collisionLayer = layer == LayerMask.NameToLayer("Enemy") ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
+        collisions.Clear();
     }
 
     private void FixedUpdate()
@@ -43,7 +50,7 @@ public class AttackBehavior : MonoBehaviour
 
     public void startAttack(int attackIndex)
     {
-        if (currentAttack is null || currentAttack.endAttack())
+        if ((attackIndex >= 0 && attackIndex < attacks.Length) && (currentAttack is null || currentAttack.endAttack()))
         {
             removeHurtBox();
             attacks[attackIndex].startAttack();
@@ -53,7 +60,7 @@ public class AttackBehavior : MonoBehaviour
 
     public void endAttack(int attackIndex)
     {
-        if (attacks[attackIndex].endAttack() && attacks[attackIndex] == currentAttack)
+        if ((attackIndex >= 0 && attackIndex < attacks.Length) && (attacks[attackIndex].endAttack() && attacks[attackIndex] == currentAttack))
         {
             removeHurtBox();
             currentAttack = null;
@@ -78,6 +85,7 @@ public class AttackBehavior : MonoBehaviour
     private void removeHurtBox()
     {
         hurtbox.enabled = false;
+        collisions.Clear();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
