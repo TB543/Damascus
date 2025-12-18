@@ -1,11 +1,10 @@
-pet prefabs
+gameplay 
 
-extra animations
+player picks 5 heros for their army
 
-projectile gravity
+each hero can have 3 equipment that give them buffs
 
-flying eye movement
+get chests by winning which will give more items/heros and duplicates will cause level up 
+chests have different rarety
 
-set character stats
-
-attack effects like burning
+https://etahoshi.itch.io/minimal-fantasy-gui-by-eta
