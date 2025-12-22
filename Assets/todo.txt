@@ -1,3 +1,17 @@
+get hero stats to display projectile attacks
+tooltips for hero attacks to display stamina cost and damage
+get scrollbar working
+
+
+
+
+
+
+
+
+
+
+
 gameplay 
 
 player picks 5 heros for their army
@@ -6,5 +20,3 @@ each hero can have 3 equipment that give them buffs
 
 get chests by winning which will give more items/heros and duplicates will cause level up 
 chests have different rarety
-
-https://etahoshi.itch.io/minimal-fantasy-gui-by-eta

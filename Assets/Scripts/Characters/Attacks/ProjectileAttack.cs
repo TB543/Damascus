@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/**
+ * an attack that spawns a projectile
+ * damage is applied by the projectile itself
+ * 
+ * see AbtractAttack for more information
+ */
 [CreateAssetMenu(fileName = "ProjectileAttack", menuName = "Scriptable Objects/ProjectileAttack")]
 public class ProjectileAttack : AbstractAttack
 {
@@ -26,6 +32,11 @@ public class ProjectileAttack : AbstractAttack
         return !running;
     }
 
+    /**
+     * spawns the projectile at the given transform
+     * 
+     * @param transform the hero transform to spawn the projectile at
+     */
     public void spawnProjectile(Transform transform)
     {
         GameObject projectile = Instantiate(projectilePrefab, transform);

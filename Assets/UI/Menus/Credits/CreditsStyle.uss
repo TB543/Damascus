@@ -1,0 +1,14 @@
+.spacerSmall {
+    margin-top: 75px;
+    margin-bottom: 20px;
+}
+
+.spacerMedium {
+    margin-top: 150px;
+    margin-bottom: 20px;
+}
+
+.spacerLarge {
+    margin-top: 400px;
+    margin-bottom: 20px;
+}

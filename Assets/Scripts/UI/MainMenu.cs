@@ -1,8 +1,10 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+/*
+ * backend for the main menu handles button functionality
+ */
 public class MainMenu : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,28 +18,9 @@ public class MainMenu : MonoBehaviour
         Button exitButton = root.Q<Button>("ExitButton");
 
         // adds button functionality
-        playButton.RegisterCallback<ClickEvent>(OnPlayButtonClicked);
-        settingsButton.RegisterCallback<ClickEvent>(OnSettingsButtonClicked);
-        creditsButton.RegisterCallback<ClickEvent>(OnCreditsButtonClicked);
-        exitButton.RegisterCallback<ClickEvent>(OnExitButtonClicked);
-    }
-
-    private void OnPlayButtonClicked(ClickEvent evt)
-    {
-        SceneManager.LoadScene("Scenes/Game");
-    }
-
-    private void OnSettingsButtonClicked(ClickEvent evt)
-    {
-    }
-
-    private void OnCreditsButtonClicked(ClickEvent evt)
-    {
-        SceneManager.LoadScene("Scenes/Credits");
-    }
-
-    private void OnExitButtonClicked(ClickEvent evt)
-    {
-        Application.Quit();
+        playButton.clicked += () => SceneManager.LoadScene("Scenes/Game");
+        settingsButton.clicked += Application.Quit;
+        creditsButton.clicked += () => SceneManager.LoadScene("Scenes/Credits");
+        exitButton.clicked += Application.Quit;
     }
 }

@@ -1,0 +1,32 @@
+.button {
+    -unity-slice-scale: 2px;
+    -unity-font-definition: url("project://database/Assets/Fonts/alagard.ttf?fileID=12800000&guid=27ba54dd5518fed42adcffc2ad9a91db&type=3#alagard");
+    font-size: 26px;
+    color: rgb(74, 65, 57);
+    width: 50px;
+    height: 50px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: rgba(255, 255, 255, 0);
+    transition-duration: 0s;
+    transition-timing-function: ease;
+}
+
+.button:hover {
+    scale: 1.1 1.1;
+    transition-duration: 0s;
+    transition-timing-function: ease;
+}
+
+.button:active {
+    scale: 1.1 1.1;
+    transition-duration: 0s;
+    transition-timing-function: ease;
+    translate: 2px 2px;
+}

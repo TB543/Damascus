@@ -2,6 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/**
+ * an attack that applies damage at a fixed interval while active
+ * attack ends when player stops the attack 
+ * 
+ * see AbtractAttack for more information
+ */
 [CreateAssetMenu(fileName = "PersistentAttack", menuName = "Scriptable Objects/PersistentAttack")]
 public class PersistentAttack : AbstractAttack
 {

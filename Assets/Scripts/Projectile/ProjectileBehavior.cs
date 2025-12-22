@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/*
+ * handles projectile movement, collision detection, and damage application
+ */
 public class ProjectileBehavior : MonoBehaviour
 {
     private float maxDistance;
@@ -10,6 +13,9 @@ public class ProjectileBehavior : MonoBehaviour
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
 
+    /*
+     * gets the parameters from the projectile from the attack behavior/attack
+     */
     public void init(float damage, float maxDistance, float initialVelocity, int parentLayer)
     {
         this.damage = damage;
@@ -22,6 +28,9 @@ public class ProjectileBehavior : MonoBehaviour
         body.linearVelocityX = initialVelocity * Mathf.Sign(transform.localScale.x);
     }
 
+    /*
+     * updates the position of the projectile every physics frame
+     */
     void FixedUpdate()
     {
         if (Mathf.Abs(transform.position.x - startingPosition) >= maxDistance)
@@ -31,6 +40,9 @@ public class ProjectileBehavior : MonoBehaviour
         }
     }
 
+    /*
+     * handles collisions
+     */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == collisionLayer && (!collision.isTrigger))
@@ -42,6 +54,9 @@ public class ProjectileBehavior : MonoBehaviour
         }
     }
 
+    /*
+     * called by the animator when the animation has finished
+     */
     private void destroy()
     {
         Destroy(gameObject);

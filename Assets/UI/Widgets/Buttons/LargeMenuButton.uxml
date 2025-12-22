@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Widgets/Buttons/LargeMenuButtonStyle.uss?fileID=7433441132597879392&amp;guid=1b1b9c08dda34d8498454578f89cac93&amp;type=3#LargeMenuButtonStyle"/>
+    <ui:Button text="Attack 1" name="Button" class="largeMenuButton" style="background-image: url(&quot;project://database/Assets/Sprites/UI/Button_52x14.png?fileID=21300000&amp;guid=578917be4c13d224c863b905e920e2ef&amp;type=3#Button_52x14&quot;); width: 97%; -unity-slice-scale: 2px; -unity-text-align: middle-left; align-self: center;">
+        <ui:Label text="10" name="Damage" class="label" style="align-self: flex-end; -unity-text-align: middle-left;"/>
+    </ui:Button>
+</ui:UXML>

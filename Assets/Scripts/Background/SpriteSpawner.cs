@@ -2,16 +2,20 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * a class that spawns background sprites to fill the screen and gives a parallax effect
+ */
 public class BGSpriteSpawner : MonoBehaviour
 {
     [SerializeField] private Sprite image;
     [SerializeField] private int zLayer;
     [SerializeField] bool isBaseLayer;
 
+    private int baseLayer;
+    private LinkedList<GameObject> sprites = new();
+
     public bool IsBaseLayer => isBaseLayer;
     public int ZLayer => zLayer;
-    int baseLayer;
-    private LinkedList<GameObject> sprites = new();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -30,6 +34,9 @@ public class BGSpriteSpawner : MonoBehaviour
         }
     }
 
+    /**
+     * handles spawning and removing sprites
+     */
     void checkSprites()
     {
         // get the screen bbox in world coordinates
@@ -58,6 +65,13 @@ public class BGSpriteSpawner : MonoBehaviour
             sprites.RemoveLast();
         }
     }
+
+    /**
+     * spawns a sprite
+     * 
+     * @param scale the scale of the sprite
+     * @param right whether to spawn to the right or left of existing sprites
+     */
     private void spawnSprite(float scale, bool right = false)
     {
         // gets sprite position
@@ -81,6 +95,11 @@ public class BGSpriteSpawner : MonoBehaviour
             sprites.AddFirst(sprite);
     }
 
+    /**
+     * givess parallax effect on camera movement
+     * 
+     * @param dx the change in x position of the camera
+     */
     private void onCameraMove(float dx)
     {
         transform.position += new Vector3(dx - (dx * Mathf.Pow(.75f, zLayer - baseLayer)), 0, 0);

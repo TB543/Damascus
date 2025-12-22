@@ -2,9 +2,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/**
+ * handles the attack behavior of a character, including health, stamina, and attacks
+ * communicates with the animator and attacks to process attack states
+ * 
+ * game objects with this script should also be equipped with an attack controller to handle hero input
+ */
 public class AttackBehavior : MonoBehaviour
 {
+    [SerializeField] HeroClasses heroClass;
+    [SerializeField] HeroTypes heroType;
     [SerializeField] private float health;
+    [SerializeField] private float stamina;
     [SerializeField] private AbstractAttack[] attacks;
 
     private AbstractAttack currentAttack;
@@ -14,6 +23,12 @@ public class AttackBehavior : MonoBehaviour
     private int collisionLayer;
     private HashSet<AttackBehavior> collisions = new();
 
+    public HeroClasses HeroClass => heroClass;
+    public HeroTypes HeroType => heroType;
+    public float Health => health;
+    public float Stamina => stamina;
+    public AbstractAttack[] Attacks => attacks;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,9 +37,21 @@ public class AttackBehavior : MonoBehaviour
         hurtbox = GetComponent<PolygonCollider2D>();
         setLayer(gameObject.layer);
         for (int i = 0; i < attacks.Length; i++)
-            attacks[i].init(i + 1, animator);
+            attacks[i] = attacks[i].init(i + 1, animator);
     }
 
+    /*
+     * ensures instance of scriptable objects are destroyed 
+     */
+    private void OnDestroy()
+    {
+        foreach (AbstractAttack attack in attacks)
+            Destroy(attack);
+    }
+
+    /**
+     * sets the layer of the game object and updates the collision layer accordingly
+    */
     public void setLayer(int layer)
     {
         gameObject.layer = layer;
@@ -32,12 +59,19 @@ public class AttackBehavior : MonoBehaviour
         collisions.Clear();
     }
 
+    /**
+     * applies damage to all current collisions during the physics update
+     */
     private void FixedUpdate()
     {
-        foreach (AttackBehavior collision in collisions.ToArray())
-            currentAttack.applyDamage(collision);
+        if (currentAttack is not null)
+            foreach (AttackBehavior collision in collisions.ToArray())
+                currentAttack.applyDamage(collision);
     }
 
+    /**
+     * handles when the hero is attacked by another hero
+    */
     public void takeDamage(float damage)
     {
         float previousHealth = health;
@@ -48,6 +82,11 @@ public class AttackBehavior : MonoBehaviour
             animator.SetTrigger("Damage");
     }
 
+    /**
+     * starts an attack on one of the following conditions:
+     *  - no attack is being performed
+     *  - the current attack can be ended
+     */
     public void startAttack(int attackIndex)
     {
         if ((attackIndex >= 0 && attackIndex < attacks.Length) && (currentAttack is null || currentAttack.endAttack()))
@@ -58,6 +97,9 @@ public class AttackBehavior : MonoBehaviour
         }
     }
 
+    /**
+     * attempts to end the current attack. called by player input
+     */
     public void endAttack(int attackIndex)
     {
         if ((attackIndex >= 0 && attackIndex < attacks.Length) && (attacks[attackIndex].endAttack() && attacks[attackIndex] == currentAttack))
@@ -67,6 +109,9 @@ public class AttackBehavior : MonoBehaviour
         }
     }
 
+    /**
+     * forces the attack animation to end. called by the animator
+     */
     private void endAttackAnimation()
     {
         currentAttack.endAttack(true);
@@ -74,6 +119,9 @@ public class AttackBehavior : MonoBehaviour
         currentAttack = null;
     }
 
+    /**
+     * called by the animator to set the hurtbox on a given frame
+     */
     private void setHurtBox()
     {
         List<Vector2> points = new List<Vector2>();
@@ -82,24 +130,36 @@ public class AttackBehavior : MonoBehaviour
         hurtbox.enabled = true;
     }
 
+    /**
+     * removes the hurtbox, called by either the animator when the attack frame ends or when the attack is ended
+     */
     private void removeHurtBox()
     {
         hurtbox.enabled = false;
         collisions.Clear();
     }
 
+    /**
+     * keeps track of all collisions in the hurtbox
+     */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == collisionLayer && (!collision.isTrigger))
             collisions.Add(collision.gameObject.GetComponent<AttackBehavior>());
     }
 
+    /**
+     * removes collisions that exit the hurtbox
+     */
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == collisionLayer && (!collision.isTrigger))
             collisions.Remove(collision.gameObject.GetComponent<AttackBehavior>());
     }
 
+    /**
+     * called by the animator to spawn a projectile during a projectile attack
+     */
     private void spawnProjectile()
     {
         (currentAttack as ProjectileAttack).spawnProjectile(transform);

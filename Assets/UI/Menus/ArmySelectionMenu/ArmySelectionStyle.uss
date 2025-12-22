@@ -1,0 +1,119 @@
+:root {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.horizontalContainer {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.statValue {
+    -unity-text-align: middle-right;
+    width: auto;
+    right: 3px;
+    left: 1px;
+}
+
+.statKey {
+    align-self: flex-start;
+}
+
+.PreviousHero2 {
+    background-image: url("project://database/Assets/Sprites/UI/CharacterBox_56x57.png?fileID=21300000&guid=1292a43fadf56bf4db668c51205d751d&type=3#CharacterBox_56x57");
+    width: 50px;
+    height: 50px;
+    -unity-slice-scale: 2px;
+    position: absolute;
+    left: 40%;
+    top: 0%;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    translate: -311% 0%;
+    scale: 0 0;
+}
+
+.PreviousHero1 {
+    background-image: url("project://database/Assets/Sprites/UI/CharacterBox_56x57.png?fileID=21300000&guid=1292a43fadf56bf4db668c51205d751d&type=3#CharacterBox_56x57");
+    width: 50px;
+    height: 50px;
+    -unity-slice-scale: 2px;
+    position: absolute;
+    left: 40%;
+    top: 0%;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    translate: -238% 0%;
+    scale: 0.7 0.7;
+}
+
+.PreviousHero {
+    background-image: url("project://database/Assets/Sprites/UI/CharacterBox_56x57.png?fileID=21300000&guid=1292a43fadf56bf4db668c51205d751d&type=3#CharacterBox_56x57");
+    width: 50px;
+    height: 50px;
+    -unity-slice-scale: 2px;
+    position: absolute;
+    left: 40%;
+    top: 0%;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    translate: -128% 0%;
+    scale: 0.85 0.85;
+}
+
+.SelectedHero {
+    background-image: url("project://database/Assets/Sprites/UI/CharacterBox_56x57.png?fileID=21300000&guid=1292a43fadf56bf4db668c51205d751d&type=3#CharacterBox_56x57");
+    width: 50px;
+    height: 50px;
+    -unity-slice-scale: 2px;
+    position: absolute;
+    left: 40%;
+    top: 0%;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+}
+
+.NextHero {
+    background-image: url("project://database/Assets/Sprites/UI/CharacterBox_56x57.png?fileID=21300000&guid=1292a43fadf56bf4db668c51205d751d&type=3#CharacterBox_56x57");
+    width: 50px;
+    height: 50px;
+    -unity-slice-scale: 2px;
+    position: absolute;
+    left: 40%;
+    top: 0%;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    translate: 128% 0%;
+    scale: 0.85 0.85;
+}
+
+.NextHero1 {
+    background-image: url("project://database/Assets/Sprites/UI/CharacterBox_56x57.png?fileID=21300000&guid=1292a43fadf56bf4db668c51205d751d&type=3#CharacterBox_56x57");
+    width: 50px;
+    height: 50px;
+    -unity-slice-scale: 2px;
+    position: absolute;
+    left: 40%;
+    top: 0%;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    translate: 238% 0%;
+    scale: 0.7 0.7;
+}
+
+.NextHero2 {
+    background-image: url("project://database/Assets/Sprites/UI/CharacterBox_56x57.png?fileID=21300000&guid=1292a43fadf56bf4db668c51205d751d&type=3#CharacterBox_56x57");
+    width: 50px;
+    height: 50px;
+    -unity-slice-scale: 2px;
+    position: absolute;
+    left: 40%;
+    top: 0%;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    translate: 311% 0%;
+    scale: 0 0;
+}

@@ -1,0 +1,81 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="MenuChains" src="project://database/Assets/UI/Widgets/MenuFrame/MenuChains.uxml?fileID=9197481963319205126&amp;guid=13cec5601e0479a4986f1346cfacb624&amp;type=3#MenuChains"/>
+    <ui:Template name="MenuFrame" src="project://database/Assets/UI/Widgets/MenuFrame/MenuFrame.uxml?fileID=9197481963319205126&amp;guid=f246df5c2cb7dcd4fbf9be3cfdfb1393&amp;type=3#MenuFrame"/>
+    <Style src="project://database/Assets/UI/Menus/ArmySelectionMenu/ArmySelectionStyle.uss?fileID=7433441132597879392&amp;guid=e10e49189cdf96a45bf5f974c09ceea4&amp;type=3#ArmySelectionStyle"/>
+    <Style src="project://database/Assets/UI/Widgets/MenuFrame/MenuFrameStyle.uss?fileID=7433441132597879392&amp;guid=39501ee70f337f84783febde16d10fbc&amp;type=3#MenuFrameStyle"/>
+    <Style src="project://database/Assets/UI/Styles/TextStyles.uss?fileID=7433441132597879392&amp;guid=72203a08736f9ee469b5ddaa39ee5d1d&amp;type=3#TextStyles"/>
+    <Style src="project://database/Assets/UI/Styles/ButtonStyles.uss?fileID=7433441132597879392&amp;guid=d9689681ac3a27b4e8f9a430dcdee43e&amp;type=3#ButtonStyles"/>
+    <Style src="project://database/Assets/UI/Widgets/Buttons/LargeMenuButtonStyle.uss?fileID=7433441132597879392&amp;guid=1b1b9c08dda34d8498454578f89cac93&amp;type=3#LargeMenuButtonStyle"/>
+    <ui:VisualElement name="HeroMenu" style="width: 25%; margin-top: 10px; padding-bottom: 10px;">
+        <ui:Instance template="MenuFrame" name="HeroSelection" style="height: 175px; flex-shrink: 0;">
+            <ui:Label text="Heros" name="HeroLabel" class="menuLabel"/>
+            <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/TopPatternPanel_01_33x15.png?fileID=4041595323842263105&amp;guid=05f5254147e42fc42895b949d88c840b&amp;type=3#TopPatternPanel_01_33x15_0&quot;); width: 22%; height: 40px; position: absolute; left: 31px; top: 31px;"/>
+            <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/TopPatternPanel_01_33x15.png?fileID=2703197434640537772&amp;guid=05f5254147e42fc42895b949d88c840b&amp;type=3#TopPatternPanel_01_33x15_1&quot;); width: 20%; height: 40px; position: absolute; right: 32px; top: 31px;"/>
+            <ui:VisualElement name="Container" class="horizontalContainer">
+                <ui:Button text="" name="LeftArrowButton" class="button" style="background-image: url(&quot;project://database/Assets/Sprites/UI/LeftArrowButton_7x10.png?fileID=3799458613590238157&amp;guid=8c7e7dff17ea5614bb7a821ad39bbde8&amp;type=3#LeftArrowButton_7x10_0&quot;); width: 30px; margin-right: 30px;"/>
+                <ui:VisualElement name="HerosContainer" style="flex-grow: 1; position: relative; width: 60%; left: auto; flex-direction: column; height: 50px; align-content: auto; align-self: auto; align-items: center; justify-content: space-around;">
+                    <ui:Image name="PreviousHero2" enabled="true" class="PreviousHero2">
+                        <ui:Image name="HeroImage" style="background-image: none; width: 45px; height: 45px; align-self: center; bottom: -3px;"/>
+                    </ui:Image>
+                    <ui:Image name="PreviousHero1" enabled="true" class="PreviousHero1">
+                        <ui:Image name="HeroImage" style="background-image: none; width: 45px; height: 45px; align-self: center; bottom: -3px;"/>
+                    </ui:Image>
+                    <ui:Image name="PreviousHero" enabled="true" class="PreviousHero">
+                        <ui:Image name="HeroImage" style="background-image: none; width: 45px; height: 45px; align-self: center; bottom: -3px;"/>
+                    </ui:Image>
+                    <ui:Image name="SelectedHero" enabled="true" class="SelectedHero">
+                        <ui:Image name="HeroImage" style="background-image: none; width: 45px; height: 45px; align-self: center; bottom: -3px;"/>
+                    </ui:Image>
+                    <ui:Image name="NextHero" enabled="true" class="NextHero">
+                        <ui:Image name="HeroImage" style="background-image: none; width: 45px; height: 45px; align-self: center; bottom: -3px;"/>
+                    </ui:Image>
+                    <ui:Image name="NextHero1" enabled="true" class="NextHero1">
+                        <ui:Image name="HeroImage" style="background-image: none; width: 45px; height: 45px; align-self: center; bottom: -3px;"/>
+                    </ui:Image>
+                    <ui:Image name="NextHero2" enabled="true" class="NextHero2">
+                        <ui:Image name="HeroImage" style="background-image: none; width: 45px; height: 45px; align-self: center; bottom: -3px;"/>
+                    </ui:Image>
+                </ui:VisualElement>
+                <ui:Image name="SelectedHeroFrame" style="background-image: url(&quot;project://database/Assets/Sprites/UI/HotkeyBoxFrame_34x34%201.png?fileID=21300000&amp;guid=f211692eca407a542b9e35163c0799e5&amp;type=3#HotkeyBoxFrame_34x34 1&quot;); width: 60px; height: 60px; -unity-slice-scale: 2px; position: absolute; left: 42%;">
+                    <ui:Button text="All" name="FilterButton" class="button" style="bottom: -62px; height: 20px; font-size: 20px; -unity-slice-scale: 1.5px; align-self: center; background-image: url(&quot;project://database/Assets/Sprites/UI/Button_52x14.png?fileID=21300000&amp;guid=578917be4c13d224c863b905e920e2ef&amp;type=3#Button_52x14&quot;); width: 100px;"/>
+                </ui:Image>
+                <ui:Button text="" name="RightArrowButton" class="button" style="background-image: url(&quot;project://database/Assets/Sprites/UI/RightArrowButton_7x10.png?fileID=8286539551316729258&amp;guid=d8f603ffd7bc3734facd15c31591a3c7&amp;type=3#RightArrowButton_7x10_0&quot;); width: 30px; margin-left: 30px;"/>
+            </ui:VisualElement>
+        </ui:Instance>
+        <ui:Instance template="MenuFrame" name="HeroStats" style="height: 100%;">
+            <ui:Instance template="MenuChains" style="position: relative; top: auto;"/>
+            <ui:Label text="Stats" name="StatsLabel" class="menuLabel"/>
+            <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/PatternMiddleBottomBG_199x48.png?fileID=4589489395629770560&amp;guid=fec45844651d3e34eb66e1df6048a8f6&amp;type=3#PatternMiddleBottomBG_199x48_0&quot;); width: 250px; height: 60px; position: absolute; rotate: 90deg; left: -13%; top: 135px;"/>
+            <ui:Image name="AnimationContainer" style="background-image: url(&quot;project://database/Assets/Sprites/UI/CharacterBox_56x57.png?fileID=21300000&amp;guid=1292a43fadf56bf4db668c51205d751d&amp;type=3#CharacterBox_56x57&quot;); width: 200px; height: 200px; align-self: center; -unity-slice-scale: 3.5px; top: 20px;">
+                <ui:Image name="Animation" style="width: 200px; height: 200px; align-self: center;"/>
+            </ui:Image>
+            <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/PatternMiddleBottomBG_199x48.png?fileID=4589489395629770560&amp;guid=fec45844651d3e34eb66e1df6048a8f6&amp;type=3#PatternMiddleBottomBG_199x48_0&quot;); width: 250px; height: 60px; position: absolute; rotate: 270deg; left: auto; top: 135px; right: -12.5%;"/>
+            <ui:Label text="Hero Name " name="HeroName" class="menuTitle" style="-unity-font-style: bold; top: 20px;"/>
+            <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/TopPatternPanel_02_33x15.png?fileID=21300000&amp;guid=014ed99acde70414ea9658a222f2a2bd&amp;type=3#TopPatternPanel_02_33x15&quot;); height: 15px; -unity-background-scale-mode: stretch-to-fill; margin-right: 33px; margin-left: 31px; top: 20px;"/>
+            <ui:ScrollView style="flex-grow: 1; top: 20px; margin-left: 30px; margin-right: 30px;">
+                <ui:Label text="Swordsman " name="Class" class="menuHeader statValue">
+                    <ui:Label text="Class " class="label statKey"/>
+                </ui:Label>
+                <ui:Label text="100 " name="Health" class="statValue menuHeader">
+                    <ui:Label text="Health" class="label statKey"/>
+                </ui:Label>
+                <ui:Label text="100 " name="Stamina" class="menuHeader statValue">
+                    <ui:Label text="Stamina " class="label statKey"/>
+                </ui:Label>
+                <ui:VisualElement name="AttacksContainer" style="flex-grow: 1;"/>
+            </ui:ScrollView>
+        </ui:Instance>
+        <ui:Instance template="MenuFrame" name="Assignment" style="height: 175px; flex-shrink: 0;">
+            <ui:Instance template="MenuChains"/>
+            <ui:Label text="Assign" name="AssignLabel" class="menuLabel"/>
+            <ui:VisualElement name="Container" class="horizontalContainer">
+                <ui:Button text="1" name="Slot1Button" class="button" style="background-image: url(&quot;project://database/Assets/Sprites/UI/MenusBox_34x34.png?fileID=21300000&amp;guid=94c23c6900921d348af9278e31d74fe5&amp;type=3#MenusBox_34x34&quot;);"/>
+                <ui:Button text="2 " name="Slot2Button" class="button" style="background-image: url(&quot;project://database/Assets/Sprites/UI/MenusBox_34x34.png?fileID=21300000&amp;guid=94c23c6900921d348af9278e31d74fe5&amp;type=3#MenusBox_34x34&quot;);"/>
+                <ui:Button text="3" name="Slot3Button" class="button" style="background-image: url(&quot;project://database/Assets/Sprites/UI/MenusBox_34x34.png?fileID=21300000&amp;guid=94c23c6900921d348af9278e31d74fe5&amp;type=3#MenusBox_34x34&quot;);"/>
+                <ui:Button text="4" name="Slot4Button" class="button" style="background-image: url(&quot;project://database/Assets/Sprites/UI/MenusBox_34x34.png?fileID=21300000&amp;guid=94c23c6900921d348af9278e31d74fe5&amp;type=3#MenusBox_34x34&quot;);"/>
+                <ui:Button text="5" name="Slot5Button" class="button" style="background-image: url(&quot;project://database/Assets/Sprites/UI/MenusBox_34x34.png?fileID=21300000&amp;guid=94c23c6900921d348af9278e31d74fe5&amp;type=3#MenusBox_34x34&quot;);"/>
+            </ui:VisualElement>
+            <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/BottomPatternPanel_119x17.png?fileID=21300000&amp;guid=f8e54838a6f824142affb31cd7e402a6&amp;type=3#BottomPatternPanel_119x17&quot;); width: 85%; height: 30px; position: absolute; bottom: 35px; -unity-slice-scale: 1.7px; align-self: center;"/>
+        </ui:Instance>
+    </ui:VisualElement>
+</ui:UXML>

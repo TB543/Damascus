@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/**
+ * handles the movement behavior of a character
+ * communicates with the animator to process movement animations
+ * 
+ * game objects with this script should also be equipped with an movement controller to handle hero input
+ */
 public class MovementBehavior : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
@@ -17,6 +23,21 @@ public class MovementBehavior : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
+    /*
+     * adjusts animations based on physics
+     */
+    private void FixedUpdate()
+    {
+        animator.SetInteger("XVelocity", (int)body.linearVelocityX);
+        animator.SetInteger("YVelocity", (int)(body.linearVelocityY * 1000));
+    }
+
+    /**
+     * moves the player horizontally based on the given velocity.
+     * must be continuously called every physics update to maintain movement
+     * 
+     * @return the new x position of the hero
+     */
     public float move(float xVelocity)
     {
         // adjusts position and rotation
@@ -29,13 +50,12 @@ public class MovementBehavior : MonoBehaviour
         // resets jumps if character has touched the ground
         if (body.IsTouchingLayers(LayerMask.GetMask("Background", "Enemy")))
             currentJumps = 0;
-
-        // updates animator
-        animator.SetInteger("XVelocity", (int)velocity);
-        animator.SetInteger("YVelocity", (int)(body.linearVelocityY * 1000));
         return body.position.x;
     }
 
+    /**
+     * called when the hero jumps. only called once when the jump is initiated
+     */
     public void jump()
     {
         if (currentJumps < numJumps - 1)
