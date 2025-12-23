@@ -11,6 +11,7 @@ public class ProjectileBehavior : MonoBehaviour
     private int collisionLayer;
     private float startingPosition;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
 
@@ -25,6 +26,7 @@ public class ProjectileBehavior : MonoBehaviour
         collisionLayer = parent.gameObject.layer == LayerMask.NameToLayer("Enemy") ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
         startingPosition = transform.position.x;
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         body.linearVelocityX = initialVelocity * Mathf.Sign(transform.localScale.x);
@@ -47,7 +49,7 @@ public class ProjectileBehavior : MonoBehaviour
      */
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == collisionLayer && (!collision.isTrigger))
+        if (collision.gameObject.layer == collisionLayer && (!collision.isTrigger) && spriteRenderer.enabled)
         {
             boxCollider.enabled = false;
             animator.SetTrigger("Explode");

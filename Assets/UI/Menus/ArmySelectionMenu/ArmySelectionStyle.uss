@@ -3,23 +3,33 @@
     justify-content: space-between;
 }
 
+.slot {
+    background-image: url("project://database/Assets/Sprites/UI/HighlightButton_60x23.png?fileID=21300000&guid=a5784f231b1d7334dbedc72c3fd78347&type=3#HighlightButton_60x23");
+    width: 200px;
+    height: 200px;
+    -unity-slice-scale: 5px;
+    align-self: flex-end;
+    bottom: 7%;
+}
+
+.slotButton {
+    background-image: url("project://database/Assets/Sprites/UI/MenusBox_34x34.png?fileID=21300000&guid=94c23c6900921d348af9278e31d74fe5&type=3#MenusBox_34x34");
+}
+
+.statValue {
+    -unity-text-align: middle-right;
+}
+
+.statKey {
+    align-self: flex-start;
+}
+
 .horizontalContainer {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     margin-right: 50px;
     margin-left: 50px;
-}
-
-.statValue {
-    -unity-text-align: middle-right;
-    width: auto;
-    right: 3px;
-    left: 1px;
-}
-
-.statKey {
-    align-self: flex-start;
 }
 
 .PreviousHero2 {

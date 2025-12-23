@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -25,6 +26,7 @@ public class HeroSelectionMenu : MonoBehaviour
     private int selectedHeroIndex = 0;
     private GameObject selectedHeroInstance;
     private ArmySlot[] army = new ArmySlot[5];
+    private Image[] emptySlotImages = new Image[5];
 
     private VisualElement root;
     private Button leftArrow;
@@ -47,7 +49,7 @@ public class HeroSelectionMenu : MonoBehaviour
     void Start()
     {
         // gets UI elements
-        root = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("HeroMenu");
+        root = GetComponent<UIDocument>().rootVisualElement;
         leftArrow = root.Q<Button>("LeftArrowButton");
         rightArrow = root.Q<Button>("RightArrowButton");
         filterButton = root.Q<Button>("FilterButton");
@@ -73,6 +75,13 @@ public class HeroSelectionMenu : MonoBehaviour
         heroSelector.AddFirst(root.Q<Image>("PreviousHero1"));
         heroSelector.AddFirst(root.Q<Image>("PreviousHero2"));
 
+        // gets empty slot images
+        emptySlotImages[0] = root.Q<Image>("Slot1");
+        emptySlotImages[1] = root.Q<Image>("Slot2");
+        emptySlotImages[2] = root.Q<Image>("Slot3");
+        emptySlotImages[3] = root.Q<Image>("Slot4");
+        emptySlotImages[4] = root.Q<Image>("Slot5");
+
         // sets filters and initial images
         filteredHeroPool = heroPool;
         int indexOffset = filteredHeroPool.Length - (heroSelector.Count / 2);
@@ -94,6 +103,13 @@ public class HeroSelectionMenu : MonoBehaviour
         slot3Button.clicked += () => slotButtonClicked(2);
         slot4Button.clicked += () => slotButtonClicked(3);
         slot5Button.clicked += () => slotButtonClicked(4);
+
+        // starts empty slot animations
+        root.schedule.Execute(() =>
+        {
+            foreach (Image slot in emptySlotImages)
+                slot.style.scale = slot.style.scale.value == Vector2.one ? Vector2.one * 1.1f : Vector2.one;
+        }).Every(750);
     }
 
     // Update is called once per frame
@@ -215,15 +231,13 @@ public class HeroSelectionMenu : MonoBehaviour
         }
 
         // calculates position to spawn hero in army
-        float xRatio = root.resolvedStyle.width / root.parent.resolvedStyle.width;
-        xRatio += ((1 - xRatio) / (army.Length + 1)) * (slotIndex + 1);
-        Vector2 bottomLeft = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * xRatio, 0, Camera.main.nearClipPlane));
-        Vector2 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.nearClipPlane));
+        Vector2 slotCenter = emptySlotImages[slotIndex].worldBound.center * root.panel.scaledPixelsPerPoint;
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(slotCenter.x, Screen.height - slotCenter.y));
 
         // assigns hero to selected slot
         Destroy(army[slotIndex].hero);
         army[slotIndex].name = filteredHeroPool[selectedHeroIndex].name;
-        army[slotIndex].hero = Instantiate(filteredHeroPool[selectedHeroIndex], new Vector2(bottomLeft.x, (topRight.y + bottomLeft.y) / 2), Quaternion.identity);
+        army[slotIndex].hero = Instantiate(filteredHeroPool[selectedHeroIndex], worldPos, Quaternion.identity);
     }
 
     /*
@@ -235,12 +249,12 @@ public class HeroSelectionMenu : MonoBehaviour
         Destroy(selectedHeroInstance);
         selectedHeroInstance = null;
         GameObject instance = Instantiate(filteredHeroPool[selectedHeroIndex]);
-        SpriteRenderer spriteRenderer = instance.GetComponent<SpriteRenderer>();
         BoxCollider2D hitbox = instance.GetComponent<BoxCollider2D>();
 
         // ensures instance is essentially non existent in the scene
         instance.GetComponent<Rigidbody2D>().gravityScale = 0;
-        spriteRenderer.enabled = false;
+        instance.GetComponent<SpriteRenderer>().enabled = false;
+        instance.GetComponent<ParticleSystem>().Stop();
         hitbox.isTrigger = true;
 
         // sets up the animation image
@@ -249,39 +263,42 @@ public class HeroSelectionMenu : MonoBehaviour
         {
             selectedHeroInstance = instance;
             formatImage(hitbox.bounds.min, instance, heroAnimationImage);
-        }).StartingIn(100); // small delay to give animator time to start todo make this time transition time for selection scroller
 
-        // updates hero stats UI
-        AttackBehavior hero = instance.GetComponent<AttackBehavior>();
-        heroName.text = filteredHeroPool[selectedHeroIndex].name;
-        heroClass.text = hero.HeroClass.ToString();
-        heroHealth.text = hero.Health.ToString();
-        heroStamina.text = hero.Stamina.ToString();
+            // updates hero stats UI
+            AttackBehavior hero = instance.GetComponent<AttackBehavior>();
+            heroName.text = filteredHeroPool[selectedHeroIndex].name + " - " + hero.HeroType;
+            heroClass.text = hero.HeroClass.ToString();
+            heroHealth.text = hero.Health.ToString();
+            heroStamina.text = hero.Stamina.ToString();
 
-        // adds attack buttons
-        attacksContainer.Clear();
-        for (int i = 0; i < hero.Attacks.Length; i++)
-        {
-            Button attackButton = attackButtonTemplate.CloneTree().Q<Button>("Button");
-            attackButton.text = "Attack " + (i + 1);
-            attackButton.Q<Label>("Damage").text = hero.Attacks[i].Damage.ToString();
-            attacksContainer.Add(attackButton);
-            int index = i;
-
-            // despawns existing projectiles and starts attack on click
-            attackButton.clicked += () =>
+            // adds attack buttons
+            attacksContainer.Clear();
+            for (int i = 0; i < hero.Attacks.Length; i++)
             {
-                foreach (GameObject projectile in hero.Projectiles)
-                    projectile.GetComponent<ProjectileBehavior>().destroy();
-                hero.startAttack(index);
-            };
+                Button attackButton = attackButtonTemplate.CloneTree().Q<Button>("Button");
+                attackButton.text = "Attack " + (i + 1);
+                attackButton.Q<Label>("Damage").text = hero.Attacks[i].Damage.ToString();
+                attacksContainer.Add(attackButton);
+                int index = i;
 
-            // ends persistent attacks after 1 second
-            attackButton.clicked += () => attackButton.schedule.Execute(() =>
-            {
-                hero.endAttack(index);
-            }).StartingIn(1000);
-        }
+                // despawns existing projectiles and starts attack on click
+                attackButton.clicked += () =>
+                {
+                    foreach (GameObject projectile in hero.Projectiles)
+                        projectile.GetComponent<ProjectileBehavior>().destroy();
+                    hero.startAttack(index);
+                };
+
+                // ends persistent attacks after 1 second
+                attackButton.clicked += () => attackButton.schedule.Execute(() =>
+                {
+                    if (!hero.IsDestroyed())
+                        hero.endAttack(index);
+                }).StartingIn(1000);
+            }
+
+            // wait to update stats until selector animation is done
+        }).StartingIn((long)(heroSelector.First.Value.resolvedStyle.transitionDuration.First().value * 1000));
     }
 
     /**
@@ -289,9 +306,9 @@ public class HeroSelectionMenu : MonoBehaviour
      * 
      * @param origin the origin point in worldspace, will be the bottom left corner of the image
      * @param instance the reference game object for scale/positioning
-     * @param iamge the UI image to position
+     * @param image the UI image to position
      */
-    private void formatImage(Vector2 origin, GameObject instance, Image image) // todo scale a bit smaller and offset from edge and ensure projectiles cannot damage
+    private void formatImage(Vector2 origin, GameObject instance, Image image)
     {
         // scales image
         Vector2 size = instance.GetComponent<SpriteRenderer>().sprite.rect.size * instance.transform.localScale;

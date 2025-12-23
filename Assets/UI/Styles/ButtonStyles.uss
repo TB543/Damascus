@@ -20,13 +20,9 @@
 
 .button:hover {
     scale: 1.1 1.1;
-    transition-duration: 0s;
-    transition-timing-function: ease;
 }
 
 .button:active {
     scale: 1.1 1.1;
-    transition-duration: 0s;
-    transition-timing-function: ease;
     translate: 2px 2px;
 }
