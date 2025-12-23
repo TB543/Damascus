@@ -1,28 +1,18 @@
-.button {
-    -unity-slice-scale: 2px;
+.unity-button {
     -unity-font-definition: url("project://database/Assets/Fonts/alagard.ttf?fileID=12800000&guid=27ba54dd5518fed42adcffc2ad9a91db&type=3#alagard");
-    font-size: 26px;
     color: rgb(74, 65, 57);
-    width: 50px;
-    height: 50px;
-    border-top-width: 0;
-    border-right-width: 0;
-    border-bottom-width: 0;
-    border-left-width: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
     background-color: rgba(255, 255, 255, 0);
-    transition-duration: 0s;
-    transition-timing-function: ease;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/Sprites/UI/Button_52x14.png?fileID=21300000&guid=578917be4c13d224c863b905e920e2ef&type=3#Button_52x14");
 }
 
-.button:hover {
+.unity-button:hover {
     scale: 1.1 1.1;
 }
 
-.button:active {
-    scale: 1.1 1.1;
+.unity-button:active {
     translate: 2px 2px;
 }

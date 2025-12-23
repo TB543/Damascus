@@ -29,8 +29,6 @@ public class HeroSelectionMenu : MonoBehaviour
     private Image[] emptySlotImages = new Image[5];
 
     private VisualElement root;
-    private Button leftArrow;
-    private Button rightArrow;
     private Button filterButton;
     private Image heroAnimationImage;
     private Image projectileAnimationImage;
@@ -39,19 +37,13 @@ public class HeroSelectionMenu : MonoBehaviour
     private Label heroHealth;
     private Label heroStamina;
     private VisualElement attacksContainer;
-    private Button slot1Button;
-    private Button slot2Button;
-    private Button slot3Button;
-    private Button slot4Button;
-    private Button slot5Button;
+    private VisualElement confirmConatiner;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // gets UI elements
         root = GetComponent<UIDocument>().rootVisualElement;
-        leftArrow = root.Q<Button>("LeftArrowButton");
-        rightArrow = root.Q<Button>("RightArrowButton");
         filterButton = root.Q<Button>("FilterButton");
         heroAnimationImage = root.Q<Image>("HeroAnimation");
         projectileAnimationImage = root.Q<Image>("ProjectileAnimation");
@@ -60,11 +52,7 @@ public class HeroSelectionMenu : MonoBehaviour
         heroHealth = root.Q<Label>("Health");
         heroStamina = root.Q<Label>("Stamina");
         attacksContainer = root.Q<VisualElement>("AttacksContainer");
-        slot1Button = root.Q<Button>("Slot1Button");
-        slot2Button = root.Q<Button>("Slot2Button");
-        slot3Button = root.Q<Button>("Slot3Button");
-        slot4Button = root.Q<Button>("Slot4Button");
-        slot5Button = root.Q<Button>("Slot5Button");
+        confirmConatiner = root.Q<VisualElement>("ConfirmContainer");
 
         // gets hero scrollbar
         heroSelector.AddFirst(root.Q<Image>("NextHero2"));
@@ -95,14 +83,15 @@ public class HeroSelectionMenu : MonoBehaviour
         updateStats();
 
         // assigns button callbacks
-        leftArrow.clicked += leftArrowClicked;
-        rightArrow.clicked += rightArrowClicked;
         filterButton.clicked += filterButtonClicked;
-        slot1Button.clicked += () => slotButtonClicked(0);
-        slot2Button.clicked += () => slotButtonClicked(1);
-        slot3Button.clicked += () => slotButtonClicked(2);
-        slot4Button.clicked += () => slotButtonClicked(3);
-        slot5Button.clicked += () => slotButtonClicked(4);
+        root.Q<Button>("LeftArrowButton").clicked += leftArrowClicked;
+        root.Q<Button>("RightArrowButton").clicked += rightArrowClicked;
+        root.Q<Button>("Slot1Button").clicked += () => slotButtonClicked(0);
+        root.Q<Button>("Slot2Button").clicked += () => slotButtonClicked(1);
+        root.Q<Button>("Slot3Button").clicked += () => slotButtonClicked(2);
+        root.Q<Button>("Slot4Button").clicked += () => slotButtonClicked(3);
+        root.Q<Button>("Slot5Button").clicked += () => slotButtonClicked(4);
+        root.Q<Button>("ConfirmButton").clicked += confirmButtonClicked;
 
         // starts empty slot animations
         root.schedule.Execute(() =>
@@ -238,6 +227,20 @@ public class HeroSelectionMenu : MonoBehaviour
         Destroy(army[slotIndex].hero);
         army[slotIndex].name = filteredHeroPool[selectedHeroIndex].name;
         army[slotIndex].hero = Instantiate(filteredHeroPool[selectedHeroIndex], worldPos, Quaternion.identity);
+
+        // shows confirm button if all slots are filled
+        if (army.All(s => s.hero != null))
+            confirmConatiner.RemoveFromClassList("hiddenConfirmFrame");
+        else
+            confirmConatiner.AddToClassList("hiddenConfirmFrame");
+    }
+
+    /*
+     * handles when the user clicks the confirm button to finalize their hero selections
+     */
+    private void confirmButtonClicked()
+    {
+
     }
 
     /*
@@ -246,8 +249,6 @@ public class HeroSelectionMenu : MonoBehaviour
     private void updateStats()
     {
         // spawns instance of hero for UI animation
-        Destroy(selectedHeroInstance);
-        selectedHeroInstance = null;
         GameObject instance = Instantiate(filteredHeroPool[selectedHeroIndex]);
         BoxCollider2D hitbox = instance.GetComponent<BoxCollider2D>();
 
@@ -261,6 +262,7 @@ public class HeroSelectionMenu : MonoBehaviour
         heroAnimationImage.style.backgroundImage = null;
         heroAnimationImage.schedule.Execute(() =>
         {
+            Destroy(selectedHeroInstance);
             selectedHeroInstance = instance;
             formatImage(hitbox.bounds.min, instance, heroAnimationImage);
 

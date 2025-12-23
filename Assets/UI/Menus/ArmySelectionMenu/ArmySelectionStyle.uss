@@ -12,10 +12,6 @@
     bottom: 7%;
 }
 
-.slotButton {
-    background-image: url("project://database/Assets/Sprites/UI/MenusBox_34x34.png?fileID=21300000&guid=94c23c6900921d348af9278e31d74fe5&type=3#MenusBox_34x34");
-}
-
 .statValue {
     -unity-text-align: middle-right;
 }
@@ -24,12 +20,20 @@
     align-self: flex-start;
 }
 
+.confirmButton:hover {
+    scale: 1.025 1.025;
+}
+
 .horizontalContainer {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     margin-right: 50px;
     margin-left: 50px;
+}
+
+.hiddenConfirmFrame {
+    translate: 610px 0;
 }
 
 .PreviousHero2 {
