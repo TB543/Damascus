@@ -11,7 +11,7 @@
             <ui:Label text="Heros" name="HeroLabel" class="menuLabel"/>
             <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/TopPatternPanel_01_33x15.png?fileID=4041595323842263105&amp;guid=05f5254147e42fc42895b949d88c840b&amp;type=3#TopPatternPanel_01_33x15_0&quot;); width: 22%; height: 40px; position: absolute; left: 31px; top: 31px;"/>
             <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/TopPatternPanel_01_33x15.png?fileID=2703197434640537772&amp;guid=05f5254147e42fc42895b949d88c840b&amp;type=3#TopPatternPanel_01_33x15_1&quot;); width: 20%; height: 40px; position: absolute; right: 32px; top: 31px;"/>
-            <ui:VisualElement name="Container" class="horizontalContainer">
+            <ui:VisualElement name="Container" class="horizontalContainer" style="top: 3px;">
                 <ui:Button text="" name="LeftArrowButton" class="button" style="background-image: url(&quot;project://database/Assets/Sprites/UI/LeftArrowButton_7x10.png?fileID=3799458613590238157&amp;guid=8c7e7dff17ea5614bb7a821ad39bbde8&amp;type=3#LeftArrowButton_7x10_0&quot;); width: 30px; margin-right: 30px;"/>
                 <ui:VisualElement name="HerosContainer" style="flex-grow: 1; position: relative; width: 60%; left: auto; flex-direction: column; height: 50px; align-content: auto; align-self: auto; align-items: center; justify-content: space-around;">
                     <ui:Image name="PreviousHero2" enabled="true" class="PreviousHero2">
@@ -47,13 +47,14 @@
             <ui:Label text="Stats" name="StatsLabel" class="menuLabel"/>
             <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/PatternMiddleBottomBG_199x48.png?fileID=4589489395629770560&amp;guid=fec45844651d3e34eb66e1df6048a8f6&amp;type=3#PatternMiddleBottomBG_199x48_0&quot;); width: 250px; height: 60px; position: absolute; rotate: 90deg; left: -13%; top: 135px;"/>
             <ui:Image name="AnimationContainer" style="background-image: url(&quot;project://database/Assets/Sprites/UI/CharacterBox_56x57.png?fileID=21300000&amp;guid=1292a43fadf56bf4db668c51205d751d&amp;type=3#CharacterBox_56x57&quot;); width: 200px; height: 200px; align-self: center; -unity-slice-scale: 3.5px; top: 20px;">
-                <ui:Image name="Animation" style="width: 200px; height: 200px; align-self: center;"/>
+                <ui:Image name="HeroAnimation" style="width: 200px; height: 200px; align-self: center; position: absolute;"/>
+                <ui:Image name="ProjectileAnimation" style="width: 200px; height: 200px; align-self: center; position: absolute;"/>
             </ui:Image>
             <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/PatternMiddleBottomBG_199x48.png?fileID=4589489395629770560&amp;guid=fec45844651d3e34eb66e1df6048a8f6&amp;type=3#PatternMiddleBottomBG_199x48_0&quot;); width: 250px; height: 60px; position: absolute; rotate: 270deg; left: auto; top: 135px; right: -12.5%;"/>
             <ui:Label text="Hero Name " name="HeroName" class="menuTitle" style="-unity-font-style: bold; top: 20px;"/>
             <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/TopPatternPanel_02_33x15.png?fileID=21300000&amp;guid=014ed99acde70414ea9658a222f2a2bd&amp;type=3#TopPatternPanel_02_33x15&quot;); height: 15px; -unity-background-scale-mode: stretch-to-fill; margin-right: 33px; margin-left: 31px; top: 20px;"/>
             <ui:ScrollView style="flex-grow: 1; top: 20px; margin-left: 30px; margin-right: 30px;">
-                <ui:Label text="Swordsman " name="Class" class="menuHeader statValue">
+                <ui:Label text="Tank" name="Class" class="menuHeader statValue">
                     <ui:Label text="Class " class="label statKey"/>
                 </ui:Label>
                 <ui:Label text="100 " name="Health" class="statValue menuHeader">

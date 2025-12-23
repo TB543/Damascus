@@ -5,8 +5,9 @@ using UnityEngine;
  */
 public class ProjectileBehavior : MonoBehaviour
 {
-    private float maxDistance;
     private float damage;
+    private float maxDistance;
+    private AttackBehavior parent;
     private int collisionLayer;
     private float startingPosition;
     private Animator animator;
@@ -16,11 +17,12 @@ public class ProjectileBehavior : MonoBehaviour
     /*
      * gets the parameters from the projectile from the attack behavior/attack
      */
-    public void init(float damage, float maxDistance, float initialVelocity, int parentLayer)
+    public void init(float damage, float maxDistance, float initialVelocity, AttackBehavior parent)
     {
         this.damage = damage;
         this.maxDistance = maxDistance;
-        collisionLayer = parentLayer == LayerMask.NameToLayer("Enemy") ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
+        this.parent = parent;
+        collisionLayer = parent.gameObject.layer == LayerMask.NameToLayer("Enemy") ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
         startingPosition = transform.position.x;
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
@@ -57,8 +59,9 @@ public class ProjectileBehavior : MonoBehaviour
     /*
      * called by the animator when the animation has finished
      */
-    private void destroy()
+    public void destroy()
     {
         Destroy(gameObject);
+        parent.removeProjectile(gameObject);
     }
 }

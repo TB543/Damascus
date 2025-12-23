@@ -30,7 +30,8 @@ public class HeroSelectionMenu : MonoBehaviour
     private Button leftArrow;
     private Button rightArrow;
     private Button filterButton;
-    private Image animationImage;
+    private Image heroAnimationImage;
+    private Image projectileAnimationImage;
     private Label heroName;
     private Label heroClass;
     private Label heroHealth;
@@ -50,7 +51,8 @@ public class HeroSelectionMenu : MonoBehaviour
         leftArrow = root.Q<Button>("LeftArrowButton");
         rightArrow = root.Q<Button>("RightArrowButton");
         filterButton = root.Q<Button>("FilterButton");
-        animationImage = root.Q<Image>("Animation");
+        heroAnimationImage = root.Q<Image>("HeroAnimation");
+        projectileAnimationImage = root.Q<Image>("ProjectileAnimation");
         heroName = root.Q<Label>("HeroName");
         heroClass = root.Q<Label>("Class");
         heroHealth = root.Q<Label>("Health");
@@ -97,10 +99,20 @@ public class HeroSelectionMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // draws hero animation to UI
         if (selectedHeroInstance != null)
         {
             Sprite sprite = selectedHeroInstance.GetComponent<SpriteRenderer>().sprite;
-            animationImage.style.backgroundImage = new StyleBackground(sprite);
+            heroAnimationImage.style.backgroundImage = new StyleBackground(sprite);
+            GameObject[] projectiles = selectedHeroInstance.GetComponent<AttackBehavior>().Projectiles;
+
+            // draws projectile animation to UI
+            if (projectiles.Length > 0)
+            {
+                Sprite projectileSprite = projectiles[0].GetComponent<SpriteRenderer>().sprite;
+                formatImage(selectedHeroInstance.GetComponent<BoxCollider2D>().bounds.min, projectiles[0], projectileAnimationImage);
+                projectileAnimationImage.style.backgroundImage = new StyleBackground(projectileSprite);
+            }
         }
     }
 
@@ -189,69 +201,6 @@ public class HeroSelectionMenu : MonoBehaviour
     }
 
     /*
-     * called every time the selected hero changes and updates the UI to reflect the new hero's stats
-     */
-    private void updateStats()
-    {
-        // spawns instance of hero for UI animation
-        Destroy(selectedHeroInstance);
-        selectedHeroInstance = null;
-        GameObject instance = Instantiate(filteredHeroPool[selectedHeroIndex]);
-        SpriteRenderer spriteRenderer = instance.GetComponent<SpriteRenderer>();
-        BoxCollider2D hitbox = instance.GetComponent<BoxCollider2D>();
-
-        // ensures instance is essentially non existent in the scene
-        instance.GetComponent<Rigidbody2D>().gravityScale = 0;
-        spriteRenderer.enabled = false;
-        hitbox.isTrigger = true;
-
-        // sets up the animation image
-        animationImage.style.backgroundImage = null;
-        animationImage.schedule.Execute(() =>
-        {
-            // scales image
-            selectedHeroInstance = instance;
-            float widthFactor = (spriteRenderer.sprite.rect.width * instance.gameObject.transform.localScale.x) / animationImage.resolvedStyle.width;
-            float heightFactor = (spriteRenderer.sprite.rect.height * instance.gameObject.transform.localScale.y) / animationImage.resolvedStyle.height;
-            Length width = new Length(widthFactor * 100, LengthUnit.Percent);
-            Length height = new Length(heightFactor * 100, LengthUnit.Percent);
-            animationImage.style.backgroundSize = new BackgroundSize(width, height);
-
-            // positions image
-            float hitboxRatioX = (hitbox.offset.x - spriteRenderer.sprite.bounds.min.x) / spriteRenderer.sprite.bounds.size.x;
-            float hitboxRatioY = (hitbox.offset.y - (hitbox.size.y / 2) - spriteRenderer.sprite.bounds.min.y) / spriteRenderer.sprite.bounds.size.y;
-            float offsetX = (hitboxRatioX * animationImage.resolvedStyle.width * widthFactor) - (animationImage.resolvedStyle.width / 2);
-            float offsetY = hitboxRatioY * animationImage.resolvedStyle.height * heightFactor;
-            animationImage.style.backgroundPositionX = new StyleBackgroundPosition(new BackgroundPosition(BackgroundPositionKeyword.Left, new Length(-offsetX - 50, LengthUnit.Pixel)));
-            animationImage.style.backgroundPositionY = new StyleBackgroundPosition(new BackgroundPosition(BackgroundPositionKeyword.Bottom, new Length(-offsetY + 3, LengthUnit.Pixel)));
-
-        }).StartingIn(100); // small delay to give animator time to start
-
-        // updates hero stats UI
-        AttackBehavior hero = instance.GetComponent<AttackBehavior>();
-        heroName.text = filteredHeroPool[selectedHeroIndex].name;
-        heroClass.text = hero.HeroClass.ToString();
-        heroHealth.text = hero.Health.ToString();
-        heroStamina.text = hero.Stamina.ToString();
-
-        // adds attack buttons
-        attacksContainer.Clear();
-        for (int i = 0; i < hero.Attacks.Length; i++)
-        {
-            Button attackButton = attackButtonTemplate.CloneTree().Q<Button>("Button");
-            attackButton.text = "Attack " + (i + 1);
-            attackButton.Q<Label>("Damage").text = hero.Attacks[i].Damage.ToString();
-            attacksContainer.Add(attackButton);
-            int index = i;
-            attackButton.clicked += () => hero.startAttack(index);
-            attackButton.clicked += () => attackButton.schedule.Execute(() =>
-            {
-                hero.endAttack(index);
-            }).StartingIn(1000);
-        }
-    }
-
-    /*
      * handles when the user clicks one of the slot buttons to assign the selected hero to that slot
      */
     private void slotButtonClicked(int slotIndex)
@@ -275,5 +224,84 @@ public class HeroSelectionMenu : MonoBehaviour
         Destroy(army[slotIndex].hero);
         army[slotIndex].name = filteredHeroPool[selectedHeroIndex].name;
         army[slotIndex].hero = Instantiate(filteredHeroPool[selectedHeroIndex], new Vector2(bottomLeft.x, (topRight.y + bottomLeft.y) / 2), Quaternion.identity);
+    }
+
+    /*
+     * called every time the selected hero changes and updates the UI to reflect the new hero's stats
+     */
+    private void updateStats()
+    {
+        // spawns instance of hero for UI animation
+        Destroy(selectedHeroInstance);
+        selectedHeroInstance = null;
+        GameObject instance = Instantiate(filteredHeroPool[selectedHeroIndex]);
+        SpriteRenderer spriteRenderer = instance.GetComponent<SpriteRenderer>();
+        BoxCollider2D hitbox = instance.GetComponent<BoxCollider2D>();
+
+        // ensures instance is essentially non existent in the scene
+        instance.GetComponent<Rigidbody2D>().gravityScale = 0;
+        spriteRenderer.enabled = false;
+        hitbox.isTrigger = true;
+
+        // sets up the animation image
+        heroAnimationImage.style.backgroundImage = null;
+        heroAnimationImage.schedule.Execute(() =>
+        {
+            selectedHeroInstance = instance;
+            formatImage(hitbox.bounds.min, instance, heroAnimationImage);
+        }).StartingIn(100); // small delay to give animator time to start todo make this time transition time for selection scroller
+
+        // updates hero stats UI
+        AttackBehavior hero = instance.GetComponent<AttackBehavior>();
+        heroName.text = filteredHeroPool[selectedHeroIndex].name;
+        heroClass.text = hero.HeroClass.ToString();
+        heroHealth.text = hero.Health.ToString();
+        heroStamina.text = hero.Stamina.ToString();
+
+        // adds attack buttons
+        attacksContainer.Clear();
+        for (int i = 0; i < hero.Attacks.Length; i++)
+        {
+            Button attackButton = attackButtonTemplate.CloneTree().Q<Button>("Button");
+            attackButton.text = "Attack " + (i + 1);
+            attackButton.Q<Label>("Damage").text = hero.Attacks[i].Damage.ToString();
+            attacksContainer.Add(attackButton);
+            int index = i;
+
+            // despawns existing projectiles and starts attack on click
+            attackButton.clicked += () =>
+            {
+                foreach (GameObject projectile in hero.Projectiles)
+                    projectile.GetComponent<ProjectileBehavior>().destroy();
+                hero.startAttack(index);
+            };
+
+            // ends persistent attacks after 1 second
+            attackButton.clicked += () => attackButton.schedule.Execute(() =>
+            {
+                hero.endAttack(index);
+            }).StartingIn(1000);
+        }
+    }
+
+    /**
+     * helper function to scale and position a UI image with respect to worldspace.
+     * 
+     * @param origin the origin point in worldspace, will be the bottom left corner of the image
+     * @param instance the reference game object for scale/positioning
+     * @param iamge the UI image to position
+     */
+    private void formatImage(Vector2 origin, GameObject instance, Image image) // todo scale a bit smaller and offset from edge and ensure projectiles cannot damage
+    {
+        // scales image
+        Vector2 size = instance.GetComponent<SpriteRenderer>().sprite.rect.size * instance.transform.localScale;
+        image.style.backgroundSize = new BackgroundSize(new Length(size.x, LengthUnit.Pixel), new Length(size.y, LengthUnit.Pixel));
+
+        // positions image
+        Sprite sprite = instance.GetComponent<SpriteRenderer>().sprite;
+        Vector2 offset = -(sprite.rect.size * instance.transform.localScale) / 2; // centers image to bottom left
+        offset -= (origin - (Vector2)instance.transform.position) * sprite.pixelsPerUnit; // finds offset from orgin and converts to pixels
+        image.style.backgroundPositionX = new StyleBackgroundPosition(new BackgroundPosition(BackgroundPositionKeyword.Left, new Length(offset.x, LengthUnit.Pixel)));
+        image.style.backgroundPositionY = new StyleBackgroundPosition(new BackgroundPosition(BackgroundPositionKeyword.Bottom, new Length(offset.y, LengthUnit.Pixel)));
     }
 }

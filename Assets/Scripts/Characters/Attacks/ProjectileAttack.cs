@@ -35,16 +35,14 @@ public class ProjectileAttack : AbstractAttack
     /**
      * spawns the projectile at the given transform
      * 
-     * @param transform the hero transform to spawn the projectile at
+     * @param transform the hero that spawned the projectile
      */
-    public void spawnProjectile(Transform transform)
+    public GameObject spawnProjectile(AttackBehavior parent)
     {
-        GameObject projectile = Instantiate(projectilePrefab, transform);
-        Vector3 worldPosition = projectile.transform.position;
-        Quaternion worldRotation = projectile.transform.rotation;
+        GameObject projectile = Instantiate(projectilePrefab, parent.transform);
         projectile.transform.parent = null;
-        projectile.transform.position = worldPosition;
-        projectile.transform.rotation = worldRotation;
-        projectile.GetComponent<ProjectileBehavior>().init(damage, maxDistance, initialVelocity, transform.gameObject.layer);
+        projectile.GetComponent<SpriteRenderer>().enabled = parent.GetComponent<SpriteRenderer>().enabled;
+        projectile.GetComponent<ProjectileBehavior>().init(damage, maxDistance, initialVelocity, parent);
+        return projectile;
     }
 }

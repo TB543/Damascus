@@ -22,12 +22,14 @@ public class AttackBehavior : MonoBehaviour
     private PolygonCollider2D hurtbox;
     private int collisionLayer;
     private HashSet<AttackBehavior> collisions = new();
+    private HashSet<GameObject> projectiles = new();
 
     public HeroClasses HeroClass => heroClass;
     public HeroTypes HeroType => heroType;
     public float Health => health;
     public float Stamina => stamina;
     public AbstractAttack[] Attacks => attacks;
+    public GameObject[] Projectiles => projectiles.ToArray();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -162,6 +164,14 @@ public class AttackBehavior : MonoBehaviour
      */
     private void spawnProjectile()
     {
-        (currentAttack as ProjectileAttack).spawnProjectile(transform);
+        projectiles.Add((currentAttack as ProjectileAttack).spawnProjectile(this));
+    }
+
+    /**
+     * called by the projectile when it is destroyed
+     */
+    public void removeProjectile(GameObject projectile)
+    {
+        projectiles.Remove(projectile);
     }
 }
