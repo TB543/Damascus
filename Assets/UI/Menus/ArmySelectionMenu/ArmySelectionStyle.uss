@@ -32,8 +32,17 @@
     margin-left: 50px;
 }
 
+.hiddenHeroMenu {
+    translate: -490px 0;
+}
+
 .hiddenConfirmFrame {
     translate: 610px 0;
+}
+
+.hiddenBattleLabel {
+    scale: 100 100;
+    visibility: hidden;
 }
 
 .PreviousHero2 {

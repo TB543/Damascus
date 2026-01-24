@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /**
  * a class that spawns background sprites to fill the screen and gives a parallax effect
@@ -20,7 +21,7 @@ public class BGSpriteSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        PlayerMovementController.cameraMovedCallback.AddListener(onCameraMove);
+        CameraMovement.cameraMoveCallback.AddListener(onCameraMove);
         checkSprites();
 
         // gets base layer
@@ -100,9 +101,9 @@ public class BGSpriteSpawner : MonoBehaviour
      * 
      * @param dx the change in x position of the camera
      */
-    private void onCameraMove(float dx)
+    private void onCameraMove(Vector3 dx)
     {
-        transform.position += new Vector3(dx - (dx * Mathf.Pow(.75f, zLayer - baseLayer)), 0, 0);
+        transform.position += new Vector3(dx.x - (dx.x * Mathf.Pow(.75f, zLayer - baseLayer)), 0, 0);
         checkSprites();
     }
 }

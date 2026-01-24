@@ -22,13 +22,16 @@ public class HeroSelectionMenu : MonoBehaviour
     private GameObject[] filteredHeroPool;
     private string[] filters = Enum.GetNames(typeof(HeroClasses));
     private int currentFilterIndex = -1;
-    private LinkedList<Image> heroSelector = new();
     private int selectedHeroIndex = 0;
     private GameObject selectedHeroInstance;
     private ArmySlot[] army = new ArmySlot[5];
+    private bool armyConfirmed = false;
+
+    private LinkedList<Image> heroSelector = new();
     private Image[] emptySlotImages = new Image[5];
 
     private VisualElement root;
+    private VisualElement heroMenu;
     private Button filterButton;
     private Image heroAnimationImage;
     private Image projectileAnimationImage;
@@ -37,13 +40,16 @@ public class HeroSelectionMenu : MonoBehaviour
     private Label heroHealth;
     private Label heroStamina;
     private VisualElement attacksContainer;
+    private VisualElement selectedHerosContainer;
     private VisualElement confirmConatiner;
+    private Label battleLabel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // gets UI elements
         root = GetComponent<UIDocument>().rootVisualElement;
+        heroMenu = root.Q<VisualElement>("HeroMenu");
         filterButton = root.Q<Button>("FilterButton");
         heroAnimationImage = root.Q<Image>("HeroAnimation");
         projectileAnimationImage = root.Q<Image>("ProjectileAnimation");
@@ -52,7 +58,9 @@ public class HeroSelectionMenu : MonoBehaviour
         heroHealth = root.Q<Label>("Health");
         heroStamina = root.Q<Label>("Stamina");
         attacksContainer = root.Q<VisualElement>("AttacksContainer");
+        selectedHerosContainer = root.Q<VisualElement>("SelectedHerosContainer");
         confirmConatiner = root.Q<VisualElement>("ConfirmContainer");
+        battleLabel = root.Q<Label>("BattleLabel");
 
         // gets hero scrollbar
         heroSelector.AddFirst(root.Q<Image>("NextHero2"));
@@ -210,6 +218,10 @@ public class HeroSelectionMenu : MonoBehaviour
      */
     private void slotButtonClicked(int slotIndex)
     {
+        // does nothing if army is already confirmed
+        if (armyConfirmed)
+            return;
+
         // removed hero from previous slot if it was already assigned
         int oldSlotIndex = Array.FindIndex(army, s => s.name == filteredHeroPool[selectedHeroIndex].name);
         if (oldSlotIndex != -1)
@@ -240,7 +252,26 @@ public class HeroSelectionMenu : MonoBehaviour
      */
     private void confirmButtonClicked()
     {
+        // does nothing if army is already confirmed
+        if (armyConfirmed)
+            return;
 
+        // does nothing if not all slots are filled
+        if (army.Any(s => s.hero == null))
+            return;
+
+        // cleans UI
+        confirmConatiner.AddToClassList("hiddenConfirmFrame");
+        heroMenu.AddToClassList("hiddenHeroMenu");
+        foreach (Image slot in emptySlotImages)
+            slot.RemoveFromHierarchy();
+
+        // centers camera on army
+        Vector2 armyCenterPixels = selectedHerosContainer.worldBound.center * root.panel.scaledPixelsPerPoint;
+        Vector2 armyCenterWorld = Camera.main.ScreenToWorldPoint(new Vector3(armyCenterPixels.x, 0));
+        Vector2 screenCenterWorld = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, 0));
+        float transitionTime = heroMenu.resolvedStyle.transitionDuration.First().value;
+        StartCoroutine(CameraMovement.smoothCameraMove(armyCenterWorld - screenCenterWorld, transitionTime, toBattle));
     }
 
     /*
@@ -322,5 +353,17 @@ public class HeroSelectionMenu : MonoBehaviour
         offset -= (origin - (Vector2)instance.transform.position) * sprite.pixelsPerUnit; // finds offset from orgin and converts to pixels
         image.style.backgroundPositionX = new StyleBackgroundPosition(new BackgroundPosition(BackgroundPositionKeyword.Left, new Length(offset.x, LengthUnit.Pixel)));
         image.style.backgroundPositionY = new StyleBackgroundPosition(new BackgroundPosition(BackgroundPositionKeyword.Bottom, new Length(offset.y, LengthUnit.Pixel)));
+    }
+
+    /*
+     * handles the transition to battle after army has been confirmed
+     */
+    private void toBattle()
+    {
+        battleLabel.RemoveFromClassList("hiddenBattleLabel");
+        battleLabel.schedule.Execute(() =>
+        {
+            StartCoroutine(CameraMovement.shakeCamera(.2f, .25f));
+        }).StartingIn((long)(battleLabel.resolvedStyle.transitionDuration.First().value * 1000));
     }
 }

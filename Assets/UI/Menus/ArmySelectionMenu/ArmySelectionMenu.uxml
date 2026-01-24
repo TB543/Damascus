@@ -6,7 +6,7 @@
     <Style src="project://database/Assets/UI/Widgets/MenuFrame/MenuFrameStyle.uss?fileID=7433441132597879392&amp;guid=39501ee70f337f84783febde16d10fbc&amp;type=3#MenuFrameStyle"/>
     <Style src="project://database/Assets/UI/Widgets/Buttons/LargeMenuButtonStyle.uss?fileID=7433441132597879392&amp;guid=1b1b9c08dda34d8498454578f89cac93&amp;type=3#LargeMenuButtonStyle"/>
     <Style src="project://database/Assets/UI/Menus/ArmySelectionMenu/ArmySelectionStyle.uss?fileID=7433441132597879392&amp;guid=e10e49189cdf96a45bf5f974c09ceea4&amp;type=3#ArmySelectionStyle"/>
-    <ui:VisualElement name="HeroMenu" style="width: 25%; margin-top: 10px; padding-bottom: 10px;">
+    <ui:VisualElement name="HeroMenu" style="width: 25%; margin-top: 10px; padding-bottom: 10px; transition-timing-function: ease-in-out; transition-duration: 0.5s;">
         <ui:Instance template="MenuFrame" name="HeroSelection" style="height: 175px; flex-shrink: 0;">
             <ui:Label text="Heros" name="HeroLabel" class="menuLabel"/>
             <ui:Image name="Decor" style="background-image: url(&quot;project://database/Assets/Sprites/UI/TopPatternPanel_01_33x15.png?fileID=4041595323842263105&amp;guid=05f5254147e42fc42895b949d88c840b&amp;type=3#TopPatternPanel_01_33x15_0&quot;); width: 22%; height: 40px; position: absolute; left: 31px; top: 31px;"/>
@@ -89,4 +89,5 @@
         <ui:Image name="Slot4" class="slot"/>
         <ui:Image name="Slot5" class="slot"/>
     </ui:VisualElement>
+    <ui:Label text="To Battle!" name="BattleLabel" class="title hiddenBattleLabel" style="position: absolute; color: rgb(181, 146, 82); text-shadow: 7px 7px 5px rgb(0, 0, 0); -unity-text-outline-width: 4px; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: bold; width: 100%; top: 25%; transition-timing-function: linear; transition-duration: 0.5s; transition-property: scale;"/>
 </ui:UXML>
