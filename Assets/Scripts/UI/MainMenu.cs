@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
         Button exitButton = root.Q<Button>("ExitButton");
 
         // adds button functionality
-        playButton.clicked += () => SceneManager.LoadScene("Scenes/Game");
+        playButton.clicked += () => SceneManager.LoadScene("Scenes/HeroSelection");
         settingsButton.clicked += Application.Quit;
         creditsButton.clicked += () => SceneManager.LoadScene("Scenes/Credits");
         exitButton.clicked += Application.Quit;
